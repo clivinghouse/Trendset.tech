@@ -19,7 +19,7 @@ from django.urls import path
 from django.urls import include, path
 
 urlpatterns = [
-    path("hello/", include("trendset.urls")),
+    path("", include("trendset.urls")),
     path("admin/", admin.site.urls),
 ]
 

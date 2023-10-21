@@ -20,8 +20,8 @@ def sign_up(request):
     
     firebase_id = 1
     
-    helper = dbHelper()
-    helper.addUser(firebase_id, fname, lname, email)
+    '''helper = dbHelper()
+    helper.addUser(firebase_id, fname, lname, email)'''
     
     data = fname + lname + email +  password
     print("Name:", data)

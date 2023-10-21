@@ -9,3 +9,8 @@ def index(request):
 
 def home(request):
     return HttpResponse("Home")
+
+def sign_up(request):
+    data = request.POST.get("name")
+    print(data)
+    return render(request, "sign_up.html")

@@ -11,6 +11,11 @@ def home(request):
     return HttpResponse("Home")
 
 def sign_up(request):
-    data = request.POST.get("name")
-    print(data)
+    fname = request.POST.get("fname")
+    lname = request.POST.get("lname")
+    email = request.POST.get("email")
+    password = request.POST.get("pass")
+    
+    data = fname + lname + email +  password
+    print("Name:", data)
     return render(request, "sign_up.html")

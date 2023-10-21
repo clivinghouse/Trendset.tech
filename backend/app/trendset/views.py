@@ -17,12 +17,13 @@ def sign_up(request):
     lname = request.POST.get("lname")
     email = request.POST.get("email")
     password = request.POST.get("pass")
-    
+    ''' 
     firebase_id = 1
     
-    '''helper = dbHelper()
-    helper.addUser(firebase_id, fname, lname, email)'''
+    helper = dbHelper()
+    helper.addUser(firebase_id, fname, lname, email)
+    '''
     
-    data = fname + lname + email +  password
+    data = fname + lname + email + password
     print("Name:", data)
     return render(request, "sign_up.html")

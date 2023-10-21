@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from trendset.Helpers.dbHelperclass import dbHelper
+
 
 # Create your views here.
 from django.http import HttpResponse
@@ -15,6 +17,11 @@ def sign_up(request):
     lname = request.POST.get("lname")
     email = request.POST.get("email")
     password = request.POST.get("pass")
+    
+    firebase_id = 1
+    
+    helper = dbHelper()
+    helper.addUser(firebase_id, fname, lname, email)
     
     data = fname + lname + email +  password
     print("Name:", data)

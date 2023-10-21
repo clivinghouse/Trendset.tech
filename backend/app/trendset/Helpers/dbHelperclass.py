@@ -14,7 +14,9 @@ class dbHelper:
         return ret
     
     def addUser(self,firebase_id,f_name,l_name,email):
-        if self.getUser(firebase_id) is None:
+        results = self.getUser(firebase_id)
+
+        if results is None:
             col = self.client["users"]
             newUser = {
                 "firebase_id":firebase_id,
@@ -23,7 +25,9 @@ class dbHelper:
             }
             col.insert_one(newUser)
             return newUser
+                 
         else:
+            
             return None
     
         

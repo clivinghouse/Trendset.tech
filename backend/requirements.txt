@@ -1,6 +1,4 @@
 flask
-<<<<<<< HEAD
 django
-=======
 pymongo[srv]
->>>>>>> 802cdac4e3b5bd5cb1780180e691349678e0d788
+openai

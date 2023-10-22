@@ -1,9 +1,9 @@
 import pymongo
-import certifi
+
 class dbHelper:
     client = {}
     def __init__(self,dbConnectionString, database):
-        self.client = pymongo.MongoClient(dbConnectionString,tlsCAFile=certifi.where())[database]
+        self.client = pymongo.MongoClient(dbConnectionString)[database]
 
     def getUser(self, email):
         
@@ -43,13 +43,12 @@ class dbHelper:
         biggestVal = self.biggestVal()
         product.update({"id":biggestVal+1})
         col = self.client["products"]
-        col.insert_one({
+        fCol = col.find_one({"email":email})
+        ret = col.insert_one({
                 "email":email,
                 "product":product
             })
-        
-        
-        return product
+        return ret
     def removeProduct(self,id):
         object = self.getUniqueProduct(id)
         col = self.client['products']

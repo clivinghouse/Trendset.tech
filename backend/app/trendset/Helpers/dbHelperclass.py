@@ -61,7 +61,10 @@ class dbHelper:
         newvalues = { "$set": product }
         col.update_many(myquery, newvalues)
         return self.getUniqueProduct(id)
-        
+    def getAllForUser(self, email):
+        col = self.client['products']
+        req = col.find({"email":email})
+        return req
 
             
                

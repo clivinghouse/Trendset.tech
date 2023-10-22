@@ -25,5 +25,7 @@ upDateProduct = {
     } 
 added = conn.addProduct("co@@c.com",upDateProduct)
 
+for x in conn.getAllForUser("co@@c.com"):
+    print(x)
 # print(conn.updateProduct(3,upDateProduct))
 

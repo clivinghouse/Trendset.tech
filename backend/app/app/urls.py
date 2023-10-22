@@ -20,6 +20,7 @@ from django.urls import include, path
 
 urlpatterns = [
     path("", include("trendset.urls")),
+    path("rest/", include("trendset.api.urls")),
     path("admin/", admin.site.urls),
 ]
 

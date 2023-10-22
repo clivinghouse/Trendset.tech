@@ -1,8 +1,7 @@
-import { AuthContextProvider } from '@/components/AuthProvider'
+import { AuthContextProvider } from '@/app/_components/AuthProvider'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import './global.css'
 
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'TrendSet',
@@ -16,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className='m-8'>
         <AuthContextProvider>
           {children}
         </AuthContextProvider>

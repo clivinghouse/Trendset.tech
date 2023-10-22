@@ -1,4 +1,7 @@
 flask
 django
+djangorestframework
+markdown
+django-filter
 pymongo[srv]
 openai

@@ -1,17 +1,15 @@
-from flask import Flask, request, url_for, flash, redirect
-from markupsafe import escape
+from flask import Flask, request
 from Helpers.dbHelperclass import dbHelper as dbh
 from bson import json_util
 import os
 import json
-import ast
+
 
 
 
 session_key = os.urandom(24).hex()
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = session_key
 conn = dbh("mongodb+srv://trendset:FIfRuK42erNOir02@trendset.plb5zxd.mongodb.net","trendset")
 
 @app.route("/api/getUser/<email>")
@@ -38,12 +36,13 @@ def getUniqueProd(id):
     else:
         return json_util.dumps(connResp)
     
-@app.route("/api/addProduct/<email>")
+@app.route("/api/addProduct/<email>",methods=['POST'])
 def addProduct(email):
-    product = request.json
-    
-    new_prod = conn.addProduct(email, product)
-    return (0)  
+    response = request.data
+    jstring =  response.decode('utf8').replace("'", '"')
+    data = json.loads(jstring)
+    conn.addProduct(email, data)
+    return (data)  
 #    return json_util.dumps(new_prod)
 
 
@@ -51,7 +50,7 @@ def addProduct(email):
 def removeProduct(id):
     return conn.removeProduct(id)
 
-@app.route("/api/updaeProduct/<id><product>")
+@app.route("/api/updateProduct/<id><product>")
 def updateProduct(id, product):
     return conn.updateProduct(id, product)
 

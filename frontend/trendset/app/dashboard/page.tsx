@@ -23,7 +23,7 @@ const page = () => {
         <nav className="flex justify-between w-full">
             <a href='/'><h1 className='text-4xl font-bold'>TrendSet.tech</h1></a>
             <div className='flex flex-row content-end gap-6'>
-                <h1>{user?.email}</h1>
+                <button onClick={()=>{}}><a href="/dashboard">{user?.email}</a></button>
                 <button onClick={() =>{auth.signOut()}}>Log out</button>
             </div>
         </nav>
@@ -35,6 +35,7 @@ const page = () => {
                 })
             }
         </div>
+        <a href="/create">Create New Product</a>
     </div>;
 }
 

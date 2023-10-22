@@ -17,4 +17,4 @@ WORKDIR /project
 COPY --from=builder /install /usr/local
 ADD ./backend/api /project
 
-ENTRYPOINT ["python", "-m", "flask", "run", "--host=0.0.0.0"]
+RUN ["python", "-m", "flask", "run", "--host=0.0.0.0"]

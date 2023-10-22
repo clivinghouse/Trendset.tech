@@ -1,2 +1,3 @@
 flask --app main run -p 50001
 co@c.com
+http://127.0.0.1:50001/api/addProduct/email=co@c.com&product={"id": 666, "Logo": "sample_logo", "bio": "sample_bio", "links": [{"text": "sample_text", "url": "sample_url"}]}

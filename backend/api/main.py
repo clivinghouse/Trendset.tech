@@ -3,6 +3,9 @@ from markupsafe import escape
 from Helpers.dbHelperclass import dbHelper as dbh
 from bson import json_util
 import os
+import json
+import ast
+
 
 
 session_key = os.urandom(24).hex()
@@ -35,11 +38,14 @@ def getUniqueProd(id):
     else:
         return json_util.dumps(connResp)
     
-@app.route("/api/addProduct/<email><product>", methods=["GET"])
-def addProduct(email, product):
-    response = request.data
+@app.route("/api/addProduct/<email>")
+def addProduct(email):
+    product = request.json
+    
     new_prod = conn.addProduct(email, product)
-    return json_util.dumps(new_prod)
+    return (0)  
+#    return json_util.dumps(new_prod)
+
 
 @app.route("/api/removeProduct/<id>")
 def removeProduct(id):

@@ -1,5 +1,6 @@
 'use client';
 import { useState, SyntheticEvent } from 'react';
+import { useMutation } from 'react-query'
 import { useRouter } from 'next/navigation';
 import app from '../../utils/config'
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
@@ -11,14 +12,9 @@ const page = () => {
     const [lastName, setLastName] = useState<String>('')
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
-    const router = useRouter()
-
-    const signUp = async (event: SyntheticEvent) => {
-        event.preventDefault()
+    const {mutate} = useMutation(async (variables:{}) => {
         let result = null
         let error = null
-        
-        console.log(email,password)
 
         try {
             result = await createUserWithEmailAndPassword(auth, email, password);
@@ -30,8 +26,16 @@ const page = () => {
         if (error){
             return error
         }
+    },{
+        onSuccess: () => {
+            router.push('/dashboard')
+        }
+    })
+    const router = useRouter()
 
-        return router.push('/dashboard')
+    const signUp = async (event: SyntheticEvent) => {
+        event.preventDefault()
+        mutate({})
     }
 
   return (

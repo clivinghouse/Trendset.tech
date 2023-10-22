@@ -54,8 +54,10 @@ def addProduct(email):
 def removeProduct(id):
     return conn.removeProduct(id)
 
-@app.route("/api/updaeProduct/<id><product>")
+@app.route("/api/updaeProduct/<id>")
 def updateProduct(id, product):
+    product = request.get_json()
+    
     return conn.updateProduct(id, product)
 
 @app.route("/api/getAllForUser/<email>")

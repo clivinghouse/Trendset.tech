@@ -1,4 +1,4 @@
-ARG APP_IMAGE=python:3.8.2-alpine
+ECARG APP_IMAGE=python:3.8.2-alpine
 
 FROM python:3.11 AS base
 
@@ -17,4 +17,4 @@ WORKDIR /project
 COPY --from=builder /install /usr/local
 ADD ./backend/api /project
 
-RUN ["python", "-m", "flask", "run", "--host=0.0.0.0"]
+ENTRYPOINT ["python", "-m", "flask", "run", "--host=0.0.0.0"]

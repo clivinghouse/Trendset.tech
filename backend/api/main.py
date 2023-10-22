@@ -38,13 +38,16 @@ def getUniqueProd(id):
     else:
         return json_util.dumps(connResp)
     
-@app.route("/api/addProduct/<email>")
+@app.route("/api/addProduct/<email>", methods=["GET"])
 def addProduct(email):
-    product = request.json
-    
+    product = request.get_json()
+    '''roduct = {
+        'id': 8888,
+        'nane': 'tea'
+    }'''
     new_prod = conn.addProduct(email, product)
-    return (0)  
-#    return json_util.dumps(new_prod)
+    return new_prod
+#return json_util.dumps(new_prod)
 
 
 @app.route("/api/removeProduct/<id>")

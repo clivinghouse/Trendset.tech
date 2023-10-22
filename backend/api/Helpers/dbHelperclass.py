@@ -1,9 +1,9 @@
 import pymongo
-
+import certifi
 class dbHelper:
     client = {}
     def __init__(self,dbConnectionString, database):
-        self.client = pymongo.MongoClient(dbConnectionString)[database]
+        self.client = pymongo.MongoClient(dbConnectionString,tlsCAFile=certifi.where())[database]
 
     def getUser(self, email):
         

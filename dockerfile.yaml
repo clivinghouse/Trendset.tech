@@ -15,6 +15,6 @@ FROM base
 ENV FLASK_APP main.py
 WORKDIR /project
 COPY --from=builder /install /usr/local
-ADD . /project
+ADD ./backend/api /project
 
 ENTRYPOINT ["python", "-m", "flask", "run", "--host=0.0.0.0"]

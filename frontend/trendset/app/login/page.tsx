@@ -50,7 +50,7 @@ const login = () => {
                   <input className='border mb-4' required type='password' name='email' id='password' onChange={(e) => setPassword(e.target.value)}></input>
               </label>
               <div className='flex justify-center'>
-                <button type="submit" className='pt-2 pb-2 pl-4 pr-4 self-center bg-green-500 font-bold rounded-md'>Sign up</button>
+                <button type="submit" className='pt-2 pb-2 pl-4 pr-4 self-center bg-green-500 font-bold rounded-md'>Login</button>
               </div>
           </form>
           <span className='m-auto text-center'><p>Already have an account?</p> <a href = "/login" className='underline'>Login into your account.</a></span>
